@@ -2,13 +2,17 @@ import { useState } from "react"
 import { useHistory, useLocation } from "react-router"
 import { Link } from "react-router-dom"
 import AuthService from "../services/AuthService"
-
+interface LocationState {
+  from: {
+    pathname: string;
+  };
+}
 export const Login = () => {
   const history = useHistory()
-  const location = useLocation()
+  const location = useLocation<LocationState>()
   const showMsg = location.state?.from
   const [data, setData] = useState({ login: "", password: "" })
-  const _handleSubmit = async e => {
+  const _handleSubmit = async (e:any) => {
     e.preventDefault()
     const result = await AuthService.login(data)
     if (result) {
@@ -17,7 +21,7 @@ export const Login = () => {
       alert('authentication fails')
     }
   }
-  const _onChange = e => {
+  const _onChange = (e:any) => {
     e.persist();
     setData(state => ({ ...state, [e.target.name]: e.target.value }))
   }

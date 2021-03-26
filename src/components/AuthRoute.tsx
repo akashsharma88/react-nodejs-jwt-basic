@@ -1,9 +1,7 @@
-import React from 'react'
-import { Redirect, Route } from 'react-router';
-import AuthService from '../services/AuthService';
+import { Redirect, Route, RouteProps } from 'react-router';
 import { getItem } from '../utils/helpers';
 
-export function AuthRoute({ children, ...rest }) {
+export function AuthRoute({ children, ...rest }:RouteProps) {
     let auth = getItem('user')
     return (
         <Route

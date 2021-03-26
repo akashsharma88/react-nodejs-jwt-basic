@@ -3,14 +3,14 @@ import AuthService from "../services/AuthService"
 
 export const Register = () => {
     const [data, setData] = useState({ login: "", password: "", name: "" })
-    const _handleSubmit = async e => {
+    const _handleSubmit = async (e:any) => {
         e.preventDefault()
         const result = await AuthService.register(data)
         if (result) {
 
         }
     }
-    const _onChange = e => {
+    const _onChange = (e:any) => {
         e.persist();
         setData(state => ({ ...state, [e.target.name]: e.target.value }))
     }

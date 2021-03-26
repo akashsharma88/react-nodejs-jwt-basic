@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getItem, removeItem, setItem } from "../utils/helpers";
+import { getItem } from "../utils/helpers";
 import { API_URL } from '../config'
 axios.interceptors.request.use(config => {
     const user = getItem('user');

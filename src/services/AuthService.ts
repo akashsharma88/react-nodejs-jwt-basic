@@ -1,9 +1,10 @@
 import axios from "axios";
 import { getItem, removeItem, setItem } from "../utils/helpers";
-import {API_URL} from '../config'
+import { API_URL } from '../config'
+import { Login } from "../types";
 
 class AuthService {
-    login = async ({ login, password }) => {
+    login = async ({ login, password }: Login) => {
         try {
             const result = await axios.post(`${API_URL}/user/login`, { login, password });
             if (result.data.accessToken) {
@@ -18,7 +19,7 @@ class AuthService {
         }
     }
 
-    register = async ({ login, password, name }) => {
+    register = async ({ login, password, name }: Login) => {
         try {
             const result = await axios.post(`${API_URL}/user/register`, { login, password, name });
             return result.data
